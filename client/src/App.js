@@ -1,11 +1,11 @@
 import Search from "./components/Search";
-
+import "./";
 
 function App() {
   return (
-    <>
-    <Search/>
-    </>
+    <div>
+      <Search />
+    </div>
   );
 }
 

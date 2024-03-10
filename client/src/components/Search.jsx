@@ -1,14 +1,14 @@
 import React from "react";
+import "./search.css"; 
 
 const Search = () => {
   return (
-    <div>
-      <h1>Search Hospital Bed</h1>
-      <form >
-        <input type="text" placeholder="Enter divison"/>
-        <input type="text" placeholder="Enter district"/>
-        <input type="text" placeholder="Enter  Hosital Name"/>
-        <button type="submit">Check</button>
+    <div className="search-container">
+      <form className="search-form">
+        <input type="text" className="search-input" placeholder="Enter division"/>
+        <input type="text" className="search-input" placeholder="Enter district"/>
+        <input type="text" className="search-input" placeholder="Enter Hospital Name"/>
+        <button type="submit" className="search-button">Check</button>
       </form>
     </div>
   );

@@ -1,8 +1,11 @@
+import Search from "./components/Search";
+
+
 function App() {
   return (
-    <div >
-        <h1>New Project </h1>
-    </div>
+    <>
+    <Search/>
+    </>
   );
 }
 

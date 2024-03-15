@@ -2,17 +2,14 @@ const router = require("express").Router();
 const axios = require("axios");
 const cheerio = require("cheerio");
 
-router.get("/information", async (req, res) => {
+router.post("/information", async (req, res) => {
   const url = process.env.URL;
   const html = await axios.get(url);
   const $ = cheerio.load(html.data);
-
-  // Select the rows in the table
   const rows = $("table tr");
 
   let rowDataList = [];
 
-  // Iterate over each row and extract data
   rows.each((index, element) => {
     if (index > 1) {
       const row = $(element);
@@ -21,13 +18,12 @@ router.get("/information", async (req, res) => {
         row.find("td").eq(14).text().trim() !== ""
       ) {
         const rowData = {
-          divison: row.find("td").eq(1).text(), // Assuming the first column (index 0) of the row
+          divison: row.find("td").eq(1).text(),
           district: row.find("td").eq(2).text(),
-          facility_name: row.find("td").eq(3).text(),
+          hospital_name: row.find("td").eq(3).text(),
           total_bed: row.find("td").eq(13).text().trim(),
           occupied_beds: row.find("td").eq(14).text().trim(),
           last_updated: row.find("td").eq(17).text().trim(),
-          // Add more columns as needed
         };
 
         rowDataList.push(rowData);
@@ -36,10 +32,21 @@ router.get("/information", async (req, res) => {
   });
 
   rowDataList.pop();
-  res.json(rowDataList);
-  console.log(rowDataList.length);
+  //res.json(rowDataList);
+  //console.log(rowDataList.length);
 
-  //console.log(rowDataList[0])
+  if (req.body.division || req.body.district || req.body.hospital_name) {
+    const filterResponse = rowDataList.filter((item) => {
+      return (
+        (!req.body.division || item.division === req.body.division) &&
+        (!req.body.district || item.district === req.body.district) &&
+        (!req.body.hospital_name || item.hospital_name === req.body.hospital_name)
+      );
+    });
+    res.json(filterResponse);
+  } else {
+    res.json(rowDataList);
+  }
 });
 
 module.exports = router;

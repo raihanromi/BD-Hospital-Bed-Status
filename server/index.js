@@ -7,15 +7,16 @@ const bodyParser = require("body-parser");
 const { translate } = require("google-translate-api-browser");
 const hospitalRoute = require("./routes/hospital");
 
+
 dotenv.config();
-// Middleware to parse JSON requests
-app.use(bodyParser.json());
+app.use(express.json());
 
 app.get("/", (req, res) => {
   res.json("welcome");
 });
 
-// Translation endpoint
+
+
 app.post("/translate", async (req, res) => {
   try {
     const { text, targetLang } = req.body;
@@ -34,7 +35,6 @@ app.post("/translate", async (req, res) => {
 //TO get the hospital information
 app.use("/hospital", hospitalRoute);
 
-//server running
 app.listen(8000, () => {
   console.log(`Server running on`);
 });

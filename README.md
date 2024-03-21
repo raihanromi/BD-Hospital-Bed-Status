@@ -2,6 +2,13 @@
 
 **client side is not ready yet**
 
+
+## Api requrest
+
+### For all hospitals
+![all_hospital_info](https://github.com/raihanromi/BD-Hospital-Bed-Status/assets/98462487/72a8d8a8-9e69-4479-8410-8697e53f2763)
+
+### Specific hospital 
 ![bed_status](https://github.com/raihanromi/BD-Hospital-Bed-Status/assets/98462487/92da254c-1bcd-4d85-bd9b-2bd4352b3eed)
 
 ## Api guide:

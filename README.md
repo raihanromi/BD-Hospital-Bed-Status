@@ -2,6 +2,8 @@
 
 **client side is not ready yet**
 
+![bed_status](https://github.com/raihanromi/BD-Hospital-Bed-Status/assets/98462487/92da254c-1bcd-4d85-bd9b-2bd4352b3eed)
+
 ## Api guide:
 
 1. Download the file
